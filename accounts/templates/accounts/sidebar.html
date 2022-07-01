@@ -40,8 +40,8 @@
         <div id="collapseOne" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
             <div class="bg-white py-2 collapse-inner rounded">
                 <a class="collapse-item" href="{% url 'create_tickets' %}">Create Ticket</a>
-                <a class="collapse-item" href="cards.html">My Tickets</a>
-                <a class="collapse-item" href="cards.html">All Tickets</a>
+                <a class="collapse-item" href="{% url 'my_tickets' %}">My Tickets</a>
+                <a class="collapse-item" href="{% url 'all_tickets' %}">All Tickets</a>
             </div>
         </div>
     </li>
@@ -64,10 +64,10 @@
         </a>
         <div id="collapsePages" class="collapse" aria-labelledby="headingPages" data-parent="#accordionSidebar">
             <div class="bg-white py-2 collapse-inner rounded">
-                <a class="collapse-item" href="#">New Projects</a>
-                <a class="collapse-item" href="#">Assign Users</a>
-                <a class="collapse-item" href="#">Remove Users</a>
-                <a class="collapse-item" href="#">View Projects</a>
+                <a class="collapse-item"  href="{% url 'create_projects' %}">New Projects</a>
+                <a class="collapse-item" href="{% url 'assign_users' %}">Assign Users</a>
+                <a class="collapse-item" href="{% url 'remove_users' %}">Remove Users</a>
+                <a class="collapse-item" href="{% url 'view_projects' %}">View Projects</a>
             </div>
         </div>
     </li>
