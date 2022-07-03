@@ -21,13 +21,15 @@ def home(request):
 def create_tickets(request):
     return render(request, 'accounts/create_tickets.html')
 
-def my_tickets(request, pk):
-    my_tickets = Ticket.objects.get(id=pk)
+def my_tickets(request):
     return render(request, 'accounts/my_tickets.html')
 
 def all_tickets(request):
     tickets = Ticket.objects.all()
     return render(request, 'accounts/all_tickets.html', {'tickets': tickets})
+
+def ticket_details(request):
+    return render(request, 'accounts/ticket_details.html')
 
 def create_projects(request):
     return render(request, 'accounts/create_projects.html')
