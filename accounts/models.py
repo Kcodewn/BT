@@ -2,18 +2,15 @@
 from django.db import models
 from django.contrib.auth.models import User
 
-
-class Ticket(models.Model):
+class Member(models.Model):
     name = models.CharField(max_length=500, null=True)
-    STATUS = (
-            ('New Tickets', 'New Tickets'),
-            ('In Progress', 'In Progress'),
-            ('Urgent Tickets', 'Urgent Tickets'),
-            ('Resolved', 'Resolved'),
+    ROLE = (
+            ('Admin', 'Admin'),
+            ('Developer', 'Developer'),
+            ('Project Manager', 'Project Manager'),
+            ('Submitter', 'Submitter'),
                 )
-    status = models.CharField(max_length=500, null=True, choices=STATUS)
-    description = models.CharField(max_length=500, null=True)
-    date_created = models.DateTimeField(auto_now_add=True, null=True)
+    role = models.CharField(max_length=500, null=True, choices=ROLE)
 
     def __str__(self):
         return self.name
@@ -26,9 +23,27 @@ class Project(models.Model):
             ('In Progress', 'In Progress'),
             ('Finished', 'Finished'),
                 )
+    member = models.ForeignKey(Member, null=True, on_delete=models.SET_NULL)
     status = models.CharField(max_length=500, null=True, choices=STATUS)
     date_created = models.DateTimeField(auto_now_add=True, null=True)
 
     def __str__(self):
         return self.name
 
+
+class Ticket(models.Model):
+    name = models.CharField(max_length=500, null=True)
+    description = models.CharField(max_length=500, null=True)
+    STATUS = (
+            ('New Tickets', 'New Tickets'),
+            ('In Progress', 'In Progress'),
+            ('Urgent Tickets', 'Urgent Tickets'),
+            ('Resolved', 'Resolved'),
+                )
+    member = models.ForeignKey(Member, null=True, on_delete=models.SET_NULL)
+    project = models.ForeignKey(Project, null=True, on_delete=models.SET_NULL)
+    status = models.CharField(max_length=500, null=True, choices=STATUS)
+    date_created = models.DateTimeField(auto_now_add=True, null=True)
+
+    def __str__(self):
+        return self.name
