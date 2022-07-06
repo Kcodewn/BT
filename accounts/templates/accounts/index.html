@@ -306,6 +306,7 @@
                                         <table class="table">
                                             <tr>
                                                 <th>Name</th>
+                                                <th>Submitter</th>
                                                 <th>Status</th>
                                                 <th>description</th>
                                                 <th>Date</th>
@@ -314,6 +315,7 @@
                                             {% for i in tickets %}
                                                 <tr>
                                                     <td>{{i.name}}</td>
+                                                    <td>{{i.member}}</td>
                                                     <td>{{i.status}}</td>
                                                     <td>{{i.description}}</td>
                                                     <td>{{i.date_created}}</td>

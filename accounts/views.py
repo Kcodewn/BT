@@ -29,16 +29,19 @@ def all_tickets(request):
     return render(request, 'accounts/all_tickets.html', {'tickets': tickets})
 
 def ticket_details(request):
- 
-#CURRENTLY TRYING TO GET DYNAMIC URL ROUTING!!!!!!!!!!!!!!!! 07/03 STILL WORKING ON DYNAMIC ROUTING 
     context = {'ticket_details': ticket_details,}
     return render(request, 'accounts/ticket_details.html', context)
 
 def create_projects(request):
     return render(request, 'accounts/create_projects.html')
 
-def project_details(request):
-    return render(request, 'accounts/project_details.html')
+def project_details(request, pk):
+    project_details = Project.objects.get(id=pk)
+    
+    tickets = project_details.ticket_set.all()
+
+    context = {'project_details': project_details, 'tickets': tickets}
+    return render(request, 'accounts/project_details.html', context)
 
 def assign_users(request):
     return render(request, 'accounts/assign_users.html')
