@@ -38,6 +38,7 @@ def create_projects(request):
 def project_details(request, pk):
     project_details = Project.objects.get(id=pk)
     #FIND A WAY TO GET MEMBER AND EVERYTHING ELSE TO LINK WITH PROJECT DETAILS
+    #HOW TO GET THIS THING WORINGGG AHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHH
     tickets = project_details.ticket_set.all()
 
     context = {'project_details': project_details, 'tickets': tickets}
