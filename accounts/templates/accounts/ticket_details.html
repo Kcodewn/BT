@@ -59,12 +59,9 @@
                                 <div class="card card-body">
                                     <h6 class="m-0 font-weight-bold text-primary">Ticket Name</h6> 
                                     <table class="table">
-
-                                        {% for i in tickets %}
-                                            <tr>
-                                                <th>{{i.name}}</th>
-                                        {% endfor %}
-                                        
+                                        <tr>
+                                            <th>{{ticket_details.name}}</th>
+                                        </tr>
                                     </table>
 
                                 </div>
@@ -75,13 +72,10 @@
                                 <div class="card card-body">
                                     <h6 class="m-0 font-weight-bold text-primary">Description</h6> 
                                     <table class="table">
-
-                                        {% for i in tickets %}
-                                            <tr>
-                                                <th>{{i.description}}</th>
-                                            </tr>
-                                        {% endfor %}
-                                        
+                                        <tr>
+                                            <th>{{ticket_details.description}}</th>
+                                        </tr>
+                                    
                                     </table>
 
                                 </div>
@@ -103,15 +97,13 @@
                                                 <th>Date</th>
                                             </tr>
     
-                                            {% for i in tickets %}
-                                                <tr>
-                                                    <td>{{i.name}}</td>
-                                                    <td>{{i.project}}</td>
-                                                    <td>{{i.status}}</td>
-                                                    <td>{{i.date_created}}</td>
-                                                </tr>
-                                            {% endfor %}
-                                            
+                                            <tr>
+                                                <td>{{ticket_details.member}}</td>
+                                                <td>{{ticket_details.project}}</td>
+                                                <td>{{ticket_details.status}}</td>
+                                                <td>{{ticket_details.date_created}}</td>
+                                            </tr>
+                                        
                                         </table>
     
                                     </div>

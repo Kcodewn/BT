@@ -1,6 +1,7 @@
-from django.shortcuts import render
+from django.shortcuts import render, redirect
 from django.http import HttpResponse
 from .models import *
+from .forms import *
 
 #SideBar Views 
 def home(request):
@@ -28,12 +29,37 @@ def all_tickets(request):
     tickets = Ticket.objects.all()
     return render(request, 'accounts/all_tickets.html', {'tickets': tickets})
 
-def ticket_details(request):
+def ticket_details(request, pk):
+    ticket_details = Ticket.objects.get(id=pk)
     context = {'ticket_details': ticket_details,}
     return render(request, 'accounts/ticket_details.html', context)
 
 def create_projects(request):
-    return render(request, 'accounts/create_projects.html')
+
+    form = ProjectForm()
+    if request.method == 'POST':
+        form = ProjectForm(request.POST)
+        if form.is_valid():
+            form.save()
+            return redirect('/')
+
+    context={'form': form}
+    return render(request, 'accounts/create_projects.html', context)
+
+def update_projects(request, pk):
+    #ADD A delete_projects 
+    project = Project.objects.get(id=pk)
+    form = ProjectForm(instance=project)
+
+    if request.method == 'POST':
+        form = ProjectForm(request.POST, instance=project)
+        if form.is_valid():
+            form.save()
+            return redirect('/')
+
+    context = {'form': form}
+    return render(request, 'accounts/create_projects.html', context)
+
 
 def project_details(request, pk):
     project_details = Project.objects.get(id=pk)

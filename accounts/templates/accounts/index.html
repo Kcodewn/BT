@@ -310,6 +310,7 @@
                                                 <th>Status</th>
                                                 <th>description</th>
                                                 <th>Date</th>
+                                                <th>Manage</th>
                                             </tr>
                     
                                             {% for i in tickets %}
@@ -319,6 +320,7 @@
                                                     <td>{{i.status}}</td>
                                                     <td>{{i.description}}</td>
                                                     <td>{{i.date_created}}</td>
+                                                    <td><a href="{% url 'ticket_details' i.id %}"><i class="far fa-edit"></i></a><td>
                                                 </tr>
                                             {% endfor %}
                                             
