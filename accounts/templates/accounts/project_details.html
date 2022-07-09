@@ -60,11 +60,9 @@
                                     <h6 class="m-0 font-weight-bold text-primary">Project Name</h6> 
                                     <table class="table">
 
-                                        {% for i in Project %}
                                             <tr>
-                                                <th>{{i.name}}</th>
+                                                <th>{{project_details.name}}</th>
                                             </tr>
-                                        {% endfor %}
                                         
                                     </table>
 
@@ -77,11 +75,9 @@
                                     <h6 class="m-0 font-weight-bold text-primary">Description</h6> 
                                     <table class="table">
 
-                                        {% for i in Project %}
                                             <tr>
-                                                <th>{{i.description}}</th>
+                                                <th>{{project_details.description}}</th>
                                             </tr>
-                                        {% endfor %}
                                         
                                     </table>
 
@@ -102,14 +98,13 @@
                                                 <th>Status</th>
                                                 <th>Date</th>
                                             </tr>
-    
-                                            {% for i in Project %}
+                                            
                                                 <tr>
-                                                    <td>{{i.member}}</td>
-                                                    <td>{{i.status}}</td>
-                                                    <td>{{i.date_created}}</td>
+                                                    <td>{{project_details.member}}</td>
+                                                    <td>{{project_details.status}}</td>
+                                                    <td>{{project_details.date_created}}</td>
                                                 </tr>
-                                            {% endfor %}
+
                                             
                                         </table>
     
