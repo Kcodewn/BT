@@ -53,21 +53,28 @@
 
                         <div class="col-lg-6">
 
-                            <!-- Circle Buttons -->
                             <div class="card shadow mb-4">
-                                <div class="card card-body">
-                                    <table class="table">
-                                        <th><h6 class="m-0 font-weight-bold text-primary">Project Name</h6></th>
-                                        <th><h6 class="m-0 font-weight-bold text-primary">Update</h6></th> 
-                                        <th><h6 class="m-0 font-weight-bold text-primary">Delete</h6></th>
-                                    </table>
-                                    <table>
-                                        <tr>
-                                            <th>{{project_details.name}}</th>
-                                            <!--ADD UPDATE AND DELETE BUTTON TO PROJECT DETAILS-->
-                                        </tr>
-                                    </table>
+                                <div class="card shadow mb-4">
+                                    <div class="card card-body">
+                                        <h6 class="m-0 font-weight-bold text-primary">Details</h6> 
+                                        <table class="table">
+                                            <tr>
+                                                <th>Project Name</th>
+                                                <th>Update</th>
+                                                <th>Delete</th>
+                                            </tr>
 
+                                                <tr>
+                                                    <td>{{project_details.name}}</td>
+                                                    <td><a class="btn btn-sm btn-info" href="">Update</a></td>
+                                                    <td><a class="btn btn-sm btn-danger" href="">Delete</a></td>
+                                                </tr>
+                                        
+
+
+                                        </table>
+    
+                                    </div>
                                 </div>
                             </div>
 

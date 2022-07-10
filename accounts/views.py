@@ -60,6 +60,14 @@ def update_projects(request, pk):
     context = {'form': form}
     return render(request, 'accounts/create_projects.html', context)
 
+def delete_projects(request,pk):
+    project = Project.objects.get(id=pk)
+    if request.method == 'POST':
+        project.delete()
+        return redirect('/')
+
+    context = {'project': project}
+    return render(request, 'accounts/delete_projects.html', context)
 
 def project_details(request, pk):
     project_details = Project.objects.get(id=pk)

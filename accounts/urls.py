@@ -13,6 +13,7 @@ urlpatterns = [
     path('ticket_details/<str:pk>/', views.ticket_details, name="ticket_details"),
     path('create_projects/', views.create_projects, name="create_projects"),
     path('update_projects/<str:pk>/', views.update_projects, name="update_projects"),
+    path('delete_projects/<str:pk>/', views.delete_projects, name="delete_projects"),
     path('project_details/<str:pk>/', views.project_details, name="project_details"),
     path('assign_users/', views.assign_users, name="assign_users"),
     path('remove_users/', views.remove_users, name="remove_users"),
