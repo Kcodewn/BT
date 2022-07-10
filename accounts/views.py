@@ -47,7 +47,7 @@ def create_projects(request):
     return render(request, 'accounts/create_projects.html', context)
 
 def update_projects(request, pk):
-    #ADD A delete_projects 
+    #ADD A delete_projects Please add a delete_project page please tahjnks 
     project = Project.objects.get(id=pk)
     form = ProjectForm(instance=project)
 
