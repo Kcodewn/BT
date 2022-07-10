@@ -1,5 +1,6 @@
+from multiprocessing import context
 from django.shortcuts import render, redirect
-from django.http import HttpResponse
+from django.http import HttpResponse, JsonResponse
 from .models import *
 from .forms import *
 
@@ -16,6 +17,7 @@ def home(request):
     context = {'projects': projects, 'tickets': tickets, 'new_tickets': new_tickets, 'in_progress': in_progress, 'urgent_tickets': urgent_tickets, 'resolved': resolved}
 
     return render(request, 'accounts/index.html', context)
+
     
 
 
@@ -55,6 +57,7 @@ def delete_tickets(request,pk):
 
 
 def my_tickets(request):
+    
     return render(request, 'accounts/my_tickets.html')
 
 def all_tickets(request):
