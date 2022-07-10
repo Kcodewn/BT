@@ -20,7 +20,39 @@ def home(request):
 
 
 def create_tickets(request):
-    return render(request, 'accounts/create_tickets.html')
+    form = TicketForm()
+    if request.method == 'POST':
+        form = TicketForm(request.POST)
+        if form.is_valid():
+            form.save()
+            return redirect('/')
+
+    context={'form': form}
+    return render(request, 'accounts/create_tickets.html', context)
+
+def update_tickets(request, pk):
+    update_tickets = Ticket.objects.get(id=pk)
+    form = TicketForm(instance=update_tickets)
+
+    if request.method == 'POST':
+        form = TicketForm(request.POST, instance=update_tickets)
+        if form.is_valid():
+            form.save()
+            return redirect('/')
+
+    context = {'form': form}
+    return render(request, 'accounts/create_tickets.html', context)
+
+def delete_tickets(request,pk):
+    delete_tickets = Ticket.objects.get(id=pk)
+    if request.method == 'POST':
+        delete_tickets.delete()
+        return redirect('/')
+
+    context = {'ticket': delete_tickets}
+    return render(request, 'accounts/delete_tickets.html', context)
+
+
 
 def my_tickets(request):
     return render(request, 'accounts/my_tickets.html')
@@ -47,12 +79,11 @@ def create_projects(request):
     return render(request, 'accounts/create_projects.html', context)
 
 def update_projects(request, pk):
-    #ADD A delete_projects Please add a delete_project page please tahjnks 
-    project = Project.objects.get(id=pk)
-    form = ProjectForm(instance=project)
+    update_projects = Project.objects.get(id=pk)
+    form = ProjectForm(instance=update_projects)
 
     if request.method == 'POST':
-        form = ProjectForm(request.POST, instance=project)
+        form = ProjectForm(request.POST, instance=update_projects)
         if form.is_valid():
             form.save()
             return redirect('/')
@@ -61,12 +92,12 @@ def update_projects(request, pk):
     return render(request, 'accounts/create_projects.html', context)
 
 def delete_projects(request,pk):
-    project = Project.objects.get(id=pk)
+    delete_projects = Project.objects.get(id=pk)
     if request.method == 'POST':
-        project.delete()
+        delete_projects.delete()
         return redirect('/')
 
-    context = {'project': project}
+    context = {'project': delete_projects}
     return render(request, 'accounts/delete_projects.html', context)
 
 def project_details(request, pk):

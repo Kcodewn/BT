@@ -8,6 +8,8 @@ urlpatterns = [
     #SideBar URLs#
     path('', views.home, name="home"),
     path('create_tickets/', views.create_tickets, name="create_tickets"),
+    path('update_tickets/<str:pk>/', views.update_tickets, name="update_tickets"),
+    path('delete_tickets/<str:pk>/', views.delete_tickets, name="delete_tickets"),
     path('all_tickets/', views.all_tickets, name="all_tickets"),
     path('my_tickets/', views.my_tickets, name="my_tickets"),
     path('ticket_details/<str:pk>/', views.ticket_details, name="ticket_details"),
