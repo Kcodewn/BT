@@ -3,6 +3,7 @@ from django.shortcuts import render, redirect
 from django.http import HttpResponse, JsonResponse
 from .models import *
 from .forms import *
+from .filters import *
 
 #SideBar Views 
 def home(request):
@@ -118,7 +119,12 @@ def remove_users(request):
 
 def view_projects(request):
     projects = Project.objects.all()
-    return render(request, 'accounts/view_projects.html', {'projects': projects})
+
+    myFilter = ProjectFilter(request.GET, queryset=projects)
+    projects = myFilter.qs
+
+    context = {'projects': projects, 'myFilter': myFilter}
+    return render(request, 'accounts/view_projects.html', context)
 
 def assign_roles(request):
     return render(request, 'accounts/assign_roles.html')
