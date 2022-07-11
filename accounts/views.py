@@ -63,7 +63,12 @@ def my_tickets(request):
 
 def all_tickets(request):
     tickets = Ticket.objects.all()
-    return render(request, 'accounts/all_tickets.html', {'tickets': tickets})
+
+    myFilter = TicketFilter(request.GET, queryset=tickets)
+    tickets = myFilter.qs
+
+    context = {'tickets': tickets, 'myFilter': myFilter}
+    return render(request, 'accounts/all_tickets.html', context)
 
 def ticket_details(request, pk):
     ticket_details = Ticket.objects.get(id=pk)
