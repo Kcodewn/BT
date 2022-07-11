@@ -16,7 +16,7 @@ def home(request):
 
 
     context = {'projects': projects, 'tickets': tickets, 'new_tickets': new_tickets, 'in_progress': in_progress, 'urgent_tickets': urgent_tickets, 'resolved': resolved}
-
+    
     return render(request, 'accounts/index.html', context)
 
     
