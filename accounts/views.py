@@ -63,10 +63,8 @@ def my_tickets(request):
 
 def all_tickets(request):
     tickets = Ticket.objects.all()
-
     myFilter = TicketFilter(request.GET, queryset=tickets)
     tickets = myFilter.qs
-
     context = {'tickets': tickets, 'myFilter': myFilter}
     return render(request, 'accounts/all_tickets.html', context)
 
@@ -76,7 +74,6 @@ def ticket_details(request, pk):
     return render(request, 'accounts/ticket_details.html', context)
 
 def create_projects(request):
-
     form = ProjectForm()
     if request.method == 'POST':
         form = ProjectForm(request.POST)
@@ -132,7 +129,6 @@ def remove_users(request):
 
 def view_projects(request):
     projects = Project.objects.all()
-
     myFilter = ProjectFilter(request.GET, queryset=projects)
     projects = myFilter.qs
 
@@ -140,10 +136,38 @@ def view_projects(request):
     return render(request, 'accounts/view_projects.html', context)
 
 def assign_roles(request):
-    return render(request, 'accounts/assign_roles.html')
+    form = MemberForm()
+    if request.method == 'POST':
+        form = MemberForm(request.POST)
+        if form.is_valid():
+            form.save()
+            return redirect('/')
 
-def remove_roles(request):
-    return render(request, 'accounts/remove_roles.html')
+    context={'form': form}
+    return render(request, 'accounts/assign_roles.html', context)
+
+def update_roles(request, pk):
+    update_roles = Member.objects.get(id=pk)
+    form = MemberForm(instance=update_roles)
+
+    if request.method == 'POST':
+        form = MemberForm(request.POST, instance=update_roles)
+        if form.is_valid():
+            form.save()
+            return redirect('/')
+
+    context = {'form': form}
+    return render(request, 'accounts/assign_roles.html', context)
+
+
+def delete_members(request, pk):
+    delete_members = Member.objects.get(id=pk)
+    if request.method == 'POST':
+        delete_members.delete()
+        return redirect('/')
+
+    context = {'member': delete_members}
+    return render(request, 'accounts/delete_members.html', context)
 
 
 #Pages Views

@@ -18,10 +18,11 @@ urlpatterns = [
     path('delete_projects/<str:pk>/', views.delete_projects, name="delete_projects"),
     path('project_details/<str:pk>/', views.project_details, name="project_details"),
     path('assign_users/', views.assign_users, name="assign_users"),
+    path('update_roles/<str:pk>/', views.update_roles, name="update_roles"),
     path('remove_users/', views.remove_users, name="remove_users"),
     path('view_projects/', views.view_projects, name="view_projects"),
     path('assign_roles/', views.assign_roles, name="assign_roles"),
-    path('remove_roles/', views.remove_roles, name="remove_roles"),
+    path('delete_members/<str:pk>/', views.delete_members, name="delete_members"),
     
     #Pages URLs
     path('charts/', views.charts, name="charts"),
