@@ -117,7 +117,15 @@ def project_details(request, pk):
     return render(request, 'accounts/project_details.html', context)
 
 def assign_users(request):
-    return render(request, 'accounts/assign_users.html')
+    form = MemberForm()
+    if request.method == 'POST':
+        form = MemberForm(request.POST)
+        if form.is_valid():
+            form.save()
+            return redirect('/')
+
+    context={'form': form}
+    return render(request, 'accounts/assign_users.html', context)
 
 def remove_users(request):
     return render(request, 'accounts/remove_users.html')

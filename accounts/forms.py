@@ -11,3 +11,9 @@ class TicketForm(ModelForm):
         model = Ticket
         fields = '__all__'
     
+
+
+class MemberForm(ModelForm):
+    class Meta:
+        model = Member 
+        fields = '__all__'
