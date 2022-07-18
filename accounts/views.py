@@ -159,7 +159,7 @@ def update_roles(request, pk):
     context = {'form': form}
     return render(request, 'accounts/assign_roles.html', context)
 
-
+#FIX delete and Update Members also Add buttons and links
 def delete_members(request, pk):
     delete_members = Member.objects.get(id=pk)
     if request.method == 'POST':
