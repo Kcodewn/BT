@@ -30,6 +30,16 @@ class Project(models.Model):
     def __str__(self):
         return self.name
 
+class Role(models.Model):
+    name = models.CharField(max_length=500, null=True)
+    POWER = (
+            ('Project Manager', 'Project Manager'),
+            ('Team Member', 'Team Member'),
+                )
+    power = models.CharField(max_length=500, null=True, choices=POWER)
+    project = models.ManyToManyField(Project)
+    def __str__(self):
+        return self.name
 
 class Ticket(models.Model):
     name = models.CharField(max_length=500, null=True)

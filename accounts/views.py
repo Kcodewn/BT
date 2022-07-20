@@ -114,9 +114,9 @@ def project_details(request, pk):
     return render(request, 'accounts/project_details.html', context)
 
 def assign_users(request):
-    form = MemberForm()
+    form = RoleForm()
     if request.method == 'POST':
-        form = MemberForm(request.POST)
+        form = RoleForm(request.POST)
         if form.is_valid():
             form.save()
             return redirect('/')

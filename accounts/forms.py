@@ -1,3 +1,4 @@
+from http.client import MULTIPLE_CHOICES
 from django.forms import ModelForm
 from .models import *
 
@@ -16,4 +17,10 @@ class TicketForm(ModelForm):
 class MemberForm(ModelForm):
     class Meta:
         model = Member 
+        fields = '__all__'
+
+
+class RoleForm(ModelForm):
+    class Meta:
+        model = Role 
         fields = '__all__'
