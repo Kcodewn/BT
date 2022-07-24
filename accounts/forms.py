@@ -13,7 +13,8 @@ class TicketForm(ModelForm):
         fields = '__all__'
     
 
-#why is this not workingggggggggggggggggggg
+#why is this not workingggggggggggggggggggg 
+#Havent worked on this in so long
 class MemberForm(ModelForm):
     class Meta:
         model = Member 
